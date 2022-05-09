@@ -10,8 +10,10 @@ web:
     - "5005:5005"
 
 db:
-  image: mysql:5.7
-  environment:
-      MYSQL_ROOT_PASSWORD: mudar123
+  image: postgres:13
   ports:
-    - "3309:3309"
+      - 5432:5432
+    environment:
+        - POSTGRES_USER=ac03
+        - POSTGRES_PASSWORD=123456
+        - POSTGRES_DB=products
