@@ -41,7 +41,7 @@ def register():
 
 @app.route('/list')
 def list():
-    all_products = []
+    rows = []
     products = Product.query.all()
     for product in products:
         result = {
@@ -50,9 +50,9 @@ def list():
             "category": product.category,
             "price": product.price,
         }
-        all_products.append(result)
-    print(all_products)
-    return render_template("list.html", rows=all_products)
+        rows.append(result)
+    print(rows)
+    return render_template("list.html", rows=rows)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
