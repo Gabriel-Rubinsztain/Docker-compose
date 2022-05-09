@@ -7,7 +7,7 @@ web:
   volumes:
     - .:/data
   ports:
-    - "5005:5005"
+    - "5000:5000"
 
 db:
   image: postgres:13

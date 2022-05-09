@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, json, request
+from model.product import db
 from model.product import Product
 
 app = Flask(__name__)
@@ -53,6 +54,5 @@ def list():
     return render_template("list.html", rows=all_products)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5005))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0')
 
