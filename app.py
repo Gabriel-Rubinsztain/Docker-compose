@@ -51,6 +51,7 @@ def list():
             "price": product.price,
         }
         all_products.append(result)
+    print(all_products)
     return render_template("list.html", rows=all_products)
 
 if __name__ == "__main__":
