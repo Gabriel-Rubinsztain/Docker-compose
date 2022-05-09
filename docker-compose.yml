@@ -10,7 +10,7 @@ web:
     - "5005:5005"
 
 db:
-  image: mysql:5.7
+  image: mysql:5.7-alpine
   environment:
       MYSQL_ROOT_PASSWORD: mudar123
   ports:

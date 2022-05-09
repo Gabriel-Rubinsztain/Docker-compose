@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'mudar123'
 app.config['MYSQL_DB'] = 'teste'
-app.config['MYSQL_DATABASE_HOST'] = '172.17.0.7'
+app.config['MYSQL_DATABASE_HOST'] = 'db'
 
 mysql = MySQL(app)
 
@@ -24,14 +24,18 @@ def register():
     categoria = request.form['categoria']
     preco = request.form['preco']
 
-    if nome and categoria and preco:
+    try:
+        if nome and categoria and preco:
 
-        cursor = mysql.connection.cursor()
-        cursor.execute(
-            'INSERT INTO cadastro VALUES (% s, % s, % s)', (nome, categoria, preco))
-        mysql.connection.commit()
-        cursor.close()
-        return render_template('signup.html')
+            cursor = mysql.connection.cursor()
+            cursor.execute(
+                'INSERT INTO cadastro VALUES (% s, % s, % s)', (nome, categoria, preco))
+            mysql.connection.commit()
+            cursor.close()
+            return render_template('signup.html')
+    except Exception as e:
+        print(e)
+        return e
 
 
 @app.route('/list')
