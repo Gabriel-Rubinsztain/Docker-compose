@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, request, jsonify
 from model.product import db
 from model.product import Product
 
@@ -51,8 +51,8 @@ def list():
             "price": product.price,
         }
         rows.append(result)
-    print(rows)
-    return render_template("list.html", rows=rows)
+    res = make_response(jsonify(rows), 200)
+    return res
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
