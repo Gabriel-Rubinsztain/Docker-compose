@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, json, request, jsonify
+from flask import Flask, render_template, json, request, jsonify, make_response
 from model.product import db
 from model.product import Product
 
